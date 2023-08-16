@@ -6,6 +6,8 @@ import com.example.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("UserService")
 public class UserServiceImpl implements UserService {
 
@@ -17,5 +19,10 @@ public class UserServiceImpl implements UserService {
         User user=new User();
         user.setName(userName);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }

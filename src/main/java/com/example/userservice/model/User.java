@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Data
@@ -15,7 +14,11 @@ import static javax.persistence.GenerationType.AUTO;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
+    @Column(name="name")
     private String name;
 }
