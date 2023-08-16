@@ -43,7 +43,7 @@ jobs:
 
     - name: Build and push Docker image
       env:
-          IMAGE_NAME: user-service
+          IMAGE_NAME: hamza21/user-service
           TAG: latest
       run: |
           docker build -t $IMAGE_NAME .
