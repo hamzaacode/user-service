@@ -41,8 +41,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and Push Docker Image
-      run: 
-        docker build -t user-service
-        docker tag user-service:latest user-service:latest
-        docker push user-service:latest
+    - name: Build and push Docker image
+      env:
+          IMAGE_NAME: hamza21/user-service
+          TAG: latest
+      run: |
+          docker build -t $IMAGE_NAME .
+          docker tag $IMAGE_NAME:$TAG $DOCKER_USERNAME/$IMAGE_NAME:$TAG
+          docker push $DOCKER_USERNAME/$IMAGE_NAME:$TAG
