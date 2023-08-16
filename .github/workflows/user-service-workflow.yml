@@ -43,5 +43,5 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the web-demo Docker image
       run: |
-        docker build . --tag docker.io/hamza21/user-service:latest
-        docker push docker.io/hamza21/user-service:latest
+        docker build . --tag docker.io/hamza21/user-service-with-h2-database:latest
+        docker push docker.io/hamza21/user-service-with-h2-database:latest
