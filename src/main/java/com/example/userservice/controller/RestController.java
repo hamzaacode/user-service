@@ -1,9 +1,10 @@
 package com.example.userservice.controller;
 
+import com.example.userservice.constant.RestResponseMessage;
+import com.example.userservice.constant.RestResponseStatusCode;
 import com.example.userservice.model.User;
 import com.example.userservice.service.UserService;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
+
 import lombok.Data;
 
 import lombok.NonNull;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+
+import static com.example.userservice.model.RestApiResponse.buildResponseWithDetails;
+import static com.example.userservice.model.RestApiResponse.buildResponseWithOutDetails;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
@@ -35,17 +38,17 @@ public class RestController {
     }
 
     @PostMapping("/save-user")
-    public String saveUser(@RequestBody @Validated UserInput userInput) {
+    public ResponseEntity<Object> saveUser(@RequestBody @Validated UserInput userInput) {
         userService.saveUser(userInput.name);
-        return "Ok";
+        return buildResponseWithOutDetails(RestResponseStatusCode.OK_STATUS, RestResponseMessage.FETCH_OK);
     }
 
     @GetMapping("/find-all-users")
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<Object> findAll() {
      List<User> userList=userService.findAll();
         for (User user:userList) {
             System.out.println(user.getName());
         }
-        return ResponseEntity.ok().body(userList);
+        return buildResponseWithDetails(RestResponseStatusCode.OK_STATUS, RestResponseMessage.FETCH_OK, userService.findAll());
     }
 }
