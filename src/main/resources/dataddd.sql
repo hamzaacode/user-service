@@ -1,5 +1,0 @@
-INSERT INTO APP_USER (name) VALUES ('Amir');
-INSERT INTO APP_USER (name) VALUES ('Hamza');
-INSERT INTO APP_USER (name) VALUES ('Farhan');
-INSERT INTO APP_USER (name) VALUES ('Rana');
-INSERT INTO APP_USER (name) VALUES ('Emon');

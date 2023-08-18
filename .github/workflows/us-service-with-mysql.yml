@@ -10,9 +10,9 @@ name: User Service
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "user-service-with-mysql" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "user-service-with-mysql" ]
 
 jobs:
   build:
