@@ -41,7 +41,7 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build the web-demo Docker image
+    - name: Build the user-service Docker image
       run: |
-        docker build . --tag docker.io/hamza21/user-service-with-h2-database:latest
-        docker push docker.io/hamza21/user-service-with-h2-database:latest
+        docker build . --tag docker.io/hamza21/user-service-with-mysql-database:latest
+        docker push docker.io/hamza21/user-service-with-mysql-database:latest
