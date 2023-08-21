@@ -46,4 +46,6 @@ jobs:
         docker build . --tag docker.io/hamza21/user-service-with-mysql-database:latest
         docker push docker.io/hamza21/user-service-with-mysql-database:latest
     - name: Run spring boot app
-      run: docker run -d --name spring-app-container --network my-network -p 8080:8080 hamza21/user-service-with-mysql-database
+      run: |
+        docker network create my-network
+        docker run -d --name spring-app-container --network my-network -p 8080:8080 hamza21/user-service-with-mysql-database
