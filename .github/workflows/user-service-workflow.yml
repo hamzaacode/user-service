@@ -10,9 +10,9 @@ name: User Service
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "user-service-with-h2-database" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "user-service-with-h2-database" ]
 
 jobs:
   build:
